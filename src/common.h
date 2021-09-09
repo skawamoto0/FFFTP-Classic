@@ -72,25 +72,27 @@
 //#define PROGRAM_VERSION_NUM		1972		/* バージョン */
 // 64ビット対応
 #ifdef _WIN64
-#define VER_STR					"2.00 64bit"
+#define VER_STR					"2.01 64bit"
 #else
-#define VER_STR					"2.00"
+#define VER_STR					"2.01"
 #endif
 #define VER_NUM					2000		/* 設定バージョン */
-#define PROGRAM_VERSION_NUM		2000		/* バージョン */
+#define PROGRAM_VERSION_NUM		2010		/* バージョン */
 // ソフトウェア自動更新
 // リリースバージョンはリリース予定年（10進数4桁）+月（2桁）+日（2桁）+通し番号（0スタート2桁）とする
 // 2014年7月31日中の30個目のリリースは2014073129
-#define RELEASE_VERSION_NUM		2018040800	/* リリースバージョン */
+#define RELEASE_VERSION_NUM		2021090900	/* リリースバージョン */
 
 
 // SourceForge.JPによるフォーク
 //#define MYWEB_URL	"http://www2.biglobe.ne.jp/~sota/ffftp-qa.html"
-#ifndef FFFTP_ENGLISH
-#define MYWEB_URL	"https://ja.osdn.net/projects/ffftp/forums/"
-#else
-#define MYWEB_URL	"https://osdn.net/projects/ffftp/forums/"
-#endif
+// 個人的フォーク
+//#ifndef FFFTP_ENGLISH
+//#define MYWEB_URL	"https://ja.osdn.net/projects/ffftp/forums/"
+//#else
+//#define MYWEB_URL	"https://osdn.net/projects/ffftp/forums/"
+//#endif
+#define MYWEB_URL	"https://github.com/skawamoto0/FFFTP-Classic/"
 
 
 

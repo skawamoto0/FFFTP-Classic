@@ -1,5 +1,19 @@
 FFFTP version history.
 
+Changes in Ver.2.01
+--------------------
+
+This list includes changes applied by automatic software updates.
+
+-- Personally forked from the OSDN.jp version.
+   This is not compatible with the mainline version by Kurata Sayuri.
+
+-- Automatic software updates does not work currently.
+
+-- Updated OpenSSL.
+
+-- Updated SSL/TLS root CAs.
+
 Changes in Ver.2.00
 --------------------
 
