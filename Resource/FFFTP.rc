@@ -171,7 +171,7 @@ BEGIN
         MENUITEM SEPARATOR
         MENUITEM "ソフトウェアの更新を確認(&U)...",         MENU_UPDATES_CHECK
         MENUITEM SEPARATOR
-        MENUITEM "FFFTPについて(&A)...",            MENU_ABOUT
+        MENUITEM "FFFTP Classicについて(&A)...",    MENU_ABOUT
     END
 END
 
@@ -238,14 +238,14 @@ END
 
 about_dlg DIALOGEX 0, 0, 343, 267
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
-CAPTION "FFFTPについて"
+CAPTION "FFFTP Classicについて"
 FONT 9, "MS Shell Dlg", 0, 0, 0x0
 BEGIN
     DEFPUSHBUTTON   "OK",IDOK,145,246,50,14
     ICON            ffftp,-1,7,4,20,20
-    CTEXT           "FFFTP Ver 2.01",-1,125,11,90,8
-    CTEXT           "FFFTPはfreewareです",-1,7,231,329,8
-    CTEXT           "Copyright(C) 1997-2010 Sota & ご協力いただいた方々\nCopyright (C) 2011-2018 FFFTP Project (Hiromichi Matsushima, Suguru Kawamoto, IWAMOTO Kouichi, vitamin0x, うなー, Asami, fortran90, tomo1192, Yuji Tanaka, Moriguchi Hirokazu, ふうせん, potato)\nCopyright (C) 2021 Suguru Kawamoto",-1,7,25,329,32,SS_NOPREFIX
+    CTEXT           "FFFTP Classic Ver 2.01",-1,125,11,90,8
+    CTEXT           "FFFTP Classicはfreewareです",-1,7,231,329,8
+    CTEXT           "Copyright(C) 1997-2010 Sota & ご協力いただいた方々\nCopyright (C) 2011-2018 FFFTP Project\nCopyright (C) 2021 Suguru Kawamoto",-1,7,25,329,32,SS_NOPREFIX
     CTEXT           "",ABOUT_JRE,7,84,329,8
     EDITTEXT        ABOUT_URL,7,64,329,12,ES_CENTER | ES_AUTOHSCROLL | ES_READONLY | NOT WS_BORDER
     CTEXT           "OLE D&&D機能 by 平田豊さん、nakkaさん\nホスト内でのファイル移動機能 by 平田豊さん\nいくつかの機能 by miauさん\nマスターパスワード機能 by げんげんさん\nAES暗号化 by Mocaさん\n\n他、多くの方のご協力をいただきました。",-1,7,131,329,60
@@ -2248,13 +2248,13 @@ BEGIN
         BLOCK "080004b0"
         BEGIN
             VALUE "Comments", "これはフリーソフトウエアです。"
-            VALUE "CompanyName", "Sota, FFFTP Project"
-            VALUE "FileDescription", "FFFTP"
+            VALUE "CompanyName", "Sota, FFFTP Project, Suguru Kawamoto"
+            VALUE "FileDescription", "FFFTP Classic"
             VALUE "FileVersion", "2, 0, 1, 0"
-            VALUE "InternalName", "FFFTP"
+            VALUE "InternalName", "FFFTP Classic"
             VALUE "LegalCopyright", "Copyright (C) 1997-2010 Sota & ご協力いただいた方々\nCopyright (C) 2011-2018 FFFTP Project (Hiromichi Matsushima, Suguru Kawamoto, IWAMOTO Kouichi, vitamin0x, うなー, Asami, fortran90, tomo1192, Yuji Tanaka, Moriguchi Hirokazu, ふうせん, potato).\nCopyright (C) 2021 Suguru Kawamoto."
             VALUE "OriginalFilename", "FFFTP.exe"
-            VALUE "ProductName", "FFFTP"
+            VALUE "ProductName", "FFFTP Classic"
             VALUE "ProductVersion", "2, 0, 1, 0"
         END
     END

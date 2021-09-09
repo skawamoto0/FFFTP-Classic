@@ -785,7 +785,7 @@ static int InitApp(LPSTR lpszCmdLine, int cmdShow)
 //					SetTaskMsg("FFFTP Ver." VER_STR " Copyright(C) 1997-2010 Sota & cooperators.");
 					// 個人的フォーク
 //					SetTaskMsg("FFFTP Ver." VER_STR " Copyright(C) 1997-2010 Sota & cooperators.\r\nCopyright (C) 2011-2018 FFFTP Project (Hiromichi Matsushima, Suguru Kawamoto, IWAMOTO Kouichi, vitamin0x, unarist, Asami, fortran90, tomo1192, Yuji Tanaka, Moriguchi Hirokazu, Fu-sen, potato).");
-					SetTaskMsg("FFFTP Ver." VER_STR " Copyright(C) 1997-2010 Sota & cooperators.\r\nCopyright (C) 2011-2018 FFFTP Project (Hiromichi Matsushima, Suguru Kawamoto, IWAMOTO Kouichi, vitamin0x, unarist, Asami, fortran90, tomo1192, Yuji Tanaka, Moriguchi Hirokazu, Fu-sen, potato).\r\nCopyright (C) 2021 Suguru Kawamoto.");
+					SetTaskMsg("FFFTP Classic Ver." VER_STR " Copyright(C) 1997-2010 Sota & cooperators.\r\nCopyright (C) 2011-2018 FFFTP Project (Hiromichi Matsushima, Suguru Kawamoto, IWAMOTO Kouichi, vitamin0x, unarist, Asami, fortran90, tomo1192, Yuji Tanaka, Moriguchi Hirokazu, Fu-sen, potato).\r\nCopyright (C) 2021 Suguru Kawamoto.");
 
 					if(ForceIni)
 						SetTaskMsg("%s%s", MSGJPN283, IniPath);
@@ -987,21 +987,31 @@ void DispWindowTitle(void)
 		switch(AskCryptMode())
 		{
 		case CRYPT_NONE:
-			sprintf(Tmp, "%s@%s (%s) %s - FFFTP", TitleUserName, TitleHostName, FilterStr, MSGJPN351);
+			// 個人的フォーク
+//			sprintf(Tmp, "%s@%s (%s) %s - FFFTP", TitleUserName, TitleHostName, FilterStr, MSGJPN351);
+			sprintf(Tmp, "%s@%s (%s) %s - FFFTP Classic", TitleUserName, TitleHostName, FilterStr, MSGJPN351);
 			break;
 		case CRYPT_FTPES:
-			sprintf(Tmp, "%s@%s (%s) %s - FFFTP", TitleUserName, TitleHostName, FilterStr, MSGJPN352);
+			// 個人的フォーク
+//			sprintf(Tmp, "%s@%s (%s) %s - FFFTP", TitleUserName, TitleHostName, FilterStr, MSGJPN352);
+			sprintf(Tmp, "%s@%s (%s) %s - FFFTP Classic", TitleUserName, TitleHostName, FilterStr, MSGJPN352);
 			break;
 		case CRYPT_FTPIS:
-			sprintf(Tmp, "%s@%s (%s) %s - FFFTP", TitleUserName, TitleHostName, FilterStr, MSGJPN353);
+			// 個人的フォーク
+//			sprintf(Tmp, "%s@%s (%s) %s - FFFTP", TitleUserName, TitleHostName, FilterStr, MSGJPN353);
+			sprintf(Tmp, "%s@%s (%s) %s - FFFTP Classic", TitleUserName, TitleHostName, FilterStr, MSGJPN353);
 			break;
 		case CRYPT_SFTP:
-			sprintf(Tmp, "%s@%s (%s) %s - FFFTP", TitleUserName, TitleHostName, FilterStr, MSGJPN354);
+			// 個人的フォーク
+//			sprintf(Tmp, "%s@%s (%s) %s - FFFTP", TitleUserName, TitleHostName, FilterStr, MSGJPN354);
+			sprintf(Tmp, "%s@%s (%s) %s - FFFTP Classic", TitleUserName, TitleHostName, FilterStr, MSGJPN354);
 			break;
 		}
 	}
 	else
-		sprintf(Tmp, "FFFTP (%s)", FilterStr);
+		// 個人的フォーク
+//		sprintf(Tmp, "FFFTP (%s)", FilterStr);
+		sprintf(Tmp, "FFFTP Classic (%s)", FilterStr);
 
 	SetWindowText(GetMainHwnd(), Tmp);
 	return;

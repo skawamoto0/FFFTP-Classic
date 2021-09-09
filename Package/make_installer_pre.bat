@@ -41,9 +41,13 @@ copy /Y %DIR_DIST%\amd64\*.manifest %AMD64_DIR_ZIP_ENG%
 copy /Y %DIR_DIST%\*.pem %AMD64_DIR_ZIP_ENG%
 
 REM; copy to installer working directory
+mkdir %DIR_INST_JPN%
 copy /Y %DIR_ZIP_JPN%\*.* %DIR_INST_JPN%
+mkdir %DIR_INST_ENG%
 copy /Y %DIR_ZIP_ENG%\*.* %DIR_INST_ENG%
+mkdir %AMD64_DIR_INST_JPN%
 copy /Y %AMD64_DIR_ZIP_JPN%\*.* %AMD64_DIR_INST_JPN%
+mkdir %AMD64_DIR_INST_ENG%
 copy /Y %AMD64_DIR_ZIP_ENG%\*.* %AMD64_DIR_INST_ENG%
 
 REM; copy a portable indicator file
