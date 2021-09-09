@@ -39,7 +39,9 @@ typedef int (__cdecl* _SSL_peek)(SSL*, void*, int);
 typedef int (__cdecl* _SSL_read)(SSL*, void*, int);
 typedef int (__cdecl* _SSL_get_error)(SSL*, int);
 typedef int (__cdecl* _SSL_set1_param)(SSL*, X509_VERIFY_PARAM*);
-typedef X509* (__cdecl* _SSL_get_peer_certificate)(const SSL*);
+// OpenSSL 3.0.0対応
+//typedef X509* (__cdecl* _SSL_get_peer_certificate)(const SSL*);
+typedef X509* (__cdecl* _SSL_get1_peer_certificate)(const SSL*);
 typedef long (__cdecl* _SSL_get_verify_result)(const SSL*);
 typedef SSL_SESSION* (__cdecl* _SSL_get_session)(SSL*);
 typedef int (__cdecl* _SSL_set_session)(SSL*, SSL_SESSION*);
@@ -99,7 +101,9 @@ _SSL_peek p_SSL_peek;
 _SSL_read p_SSL_read;
 _SSL_get_error p_SSL_get_error;
 _SSL_set1_param p_SSL_set1_param;
-_SSL_get_peer_certificate p_SSL_get_peer_certificate;
+// OpenSSL 3.0.0対応
+//_SSL_get_peer_certificate p_SSL_get_peer_certificate;
+_SSL_get1_peer_certificate p_SSL_get1_peer_certificate;
 _SSL_get_verify_result p_SSL_get_verify_result;
 _SSL_get_session p_SSL_get_session;
 _SSL_set_session p_SSL_set_session;
@@ -176,9 +180,13 @@ BOOL LoadOpenSSL()
 	// OpenSSL 1.1.0対応
 //	g_hOpenSSL = LoadLibrary("ssleay32.dll");
 #if defined(_M_IX86)
-	g_hOpenSSL = LoadLibrary("libssl-1_1.dll");
+	// OpenSSL 3.0.0対応
+//	g_hOpenSSL = LoadLibrary("libssl-1_1.dll");
+	g_hOpenSSL = LoadLibrary("libssl-3.dll");
 #elif defined(_M_AMD64)
-	g_hOpenSSL = LoadLibrary("libssl-1_1-x64.dll");
+	// OpenSSL 3.0.0対応
+//	g_hOpenSSL = LoadLibrary("libssl-1_1-x64.dll");
+	g_hOpenSSL = LoadLibrary("libssl-3-x64.dll");
 #endif
 	// バージョン固定のためlibssl32.dllの読み込みは脆弱性の原因になり得るので廃止
 //	if(!g_hOpenSSL)
@@ -204,7 +212,9 @@ BOOL LoadOpenSSL()
 		|| !(p_SSL_read = (_SSL_read)GetProcAddress(g_hOpenSSL, "SSL_read"))
 		|| !(p_SSL_get_error = (_SSL_get_error)GetProcAddress(g_hOpenSSL, "SSL_get_error"))
 		|| !(p_SSL_set1_param = (_SSL_set1_param)GetProcAddress(g_hOpenSSL, "SSL_set1_param"))
-		|| !(p_SSL_get_peer_certificate = (_SSL_get_peer_certificate)GetProcAddress(g_hOpenSSL, "SSL_get_peer_certificate"))
+		// OpenSSL 3.0.0対応
+//		|| !(p_SSL_get_peer_certificate = (_SSL_get_peer_certificate)GetProcAddress(g_hOpenSSL, "SSL_get_peer_certificate"))
+		|| !(p_SSL_get1_peer_certificate = (_SSL_get1_peer_certificate)GetProcAddress(g_hOpenSSL, "SSL_get1_peer_certificate"))
 		|| !(p_SSL_get_verify_result = (_SSL_get_verify_result)GetProcAddress(g_hOpenSSL, "SSL_get_verify_result"))
 		|| !(p_SSL_get_session = (_SSL_get_session)GetProcAddress(g_hOpenSSL, "SSL_get_session"))
 		|| !(p_SSL_set_session = (_SSL_set_session)GetProcAddress(g_hOpenSSL, "SSL_set_session"))
@@ -222,9 +232,13 @@ BOOL LoadOpenSSL()
 	// OpenSSL 1.1.0対応
 //	g_hOpenSSLCommon = LoadLibrary("libeay32.dll");
 #if defined(_M_IX86)
-	g_hOpenSSLCommon = LoadLibrary("libcrypto-1_1.dll");
+	// OpenSSL 3.0.0対応
+//	g_hOpenSSLCommon = LoadLibrary("libcrypto-1_1.dll");
+	g_hOpenSSLCommon = LoadLibrary("libcrypto-3.dll");
 #elif defined(_M_AMD64)
-	g_hOpenSSLCommon = LoadLibrary("libcrypto-1_1-x64.dll");
+	// OpenSSL 3.0.0対応
+//	g_hOpenSSLCommon = LoadLibrary("libcrypto-1_1-x64.dll");
+	g_hOpenSSLCommon = LoadLibrary("libcrypto-3-x64.dll");
 #endif
 	if(!g_hOpenSSLCommon
 		|| !(p_BIO_s_mem = (_BIO_s_mem)GetProcAddress(g_hOpenSSLCommon, "BIO_s_mem"))
@@ -356,7 +370,9 @@ BOOL ConfirmSSLCertificate(SSL* pSSL, BOOL* pbAborted)
 	bVerified = FALSE;
 	pData = NULL;
 	pSubject = NULL;
-	if(pX509 = p_SSL_get_peer_certificate(pSSL))
+	// OpenSSL 3.0.0対応
+//	if(pX509 = p_SSL_get_peer_certificate(pSSL))
+	if(pX509 = p_SSL_get1_peer_certificate(pSSL))
 	{
 		if(pBIO = p_BIO_new(p_BIO_s_mem()))
 		{
